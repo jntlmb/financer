@@ -8,6 +8,7 @@ import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import AppSidebar from '@/components/app-siderbar';
 import TanstackProvider from '@/components/providers/tanstack-provider';
 import App from 'next/app';
+import { Separator } from '@/components/ui/separator';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -43,9 +44,10 @@ export default function RootLayout({
           >
             <SidebarProvider>
               <AppSidebar />
-              <main className="p-4 w-full">
-                <SidebarTrigger />
+              <main className="w-full">
+                <SidebarTrigger className="m-3" />
                 {/* <Header /> */}
+                <Separator className="" />
                 {children}
               </main>
             </SidebarProvider>

@@ -1,12 +1,17 @@
 'use server';
 
 import { db } from '@/db/db';
-import { items } from '@/db/schema';
-import { sql } from 'drizzle-orm';
+import { items, users } from '@/db/schema';
+import { sql, eq } from 'drizzle-orm';
 
 export async function getItems() {
   try {
-    const fetchedItems = await db.select().from(items);
+    const fetchedItems = await db
+      .select()
+      .from(items)
+      .leftJoin(users, eq(items.userId, users.id));
+
+    console.log(fetchedItems);
     return fetchedItems;
   } catch (error) {
     throw error;

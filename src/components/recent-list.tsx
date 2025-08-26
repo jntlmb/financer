@@ -27,15 +27,15 @@ export default async function RecentList() {
       </TableHeader>
       <TableBody>
         {items.map((item) => (
-          <TableRow key={item.id}>
+          <TableRow key={item.items.id}>
             <TableCell>
-              {item.createdAt?.toLocaleString().split(',')[0]}
+              {item.items.createdAt?.toLocaleString().split(',')[0]}
             </TableCell>
             <TableCell className="font-semibold capitalize">
-              {item.name}
+              {item.items.name}
             </TableCell>
-            <TableCell className="capitalize">{item.category}</TableCell>
-            <TableCell className="text-right">${item.price}</TableCell>
+            <TableCell className="capitalize">{item.items.category}</TableCell>
+            <TableCell className="text-right">${item.items.price}</TableCell>
           </TableRow>
         ))}
       </TableBody>

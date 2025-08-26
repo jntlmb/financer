@@ -11,13 +11,11 @@ export default async function Home() {
   console.log(item);
 
   return (
-    <div className="flex flex-col">
+    <div className="p-4">
       <div className="mt-4 mb-4">
         <RecentChart />
       </div>
-      <Suspense fallback={<Skeleton className="w-full" />}>
-        <RecentList />
-      </Suspense>
+      <RecentList />
     </div>
   );
 }

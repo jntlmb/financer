@@ -48,8 +48,6 @@ export default function RecentChart() {
 
   return (
     <section className="flex flex-col items-center">
-      <h1 className="font-semibold text-xl self-start mb-4">Recent Activity</h1>
-
       {isLoading && (
         <Skeleton className="min-h-[200px] max-h-[350px] w-full max-w-[600px]" />
       )}
@@ -69,7 +67,6 @@ export default function RecentChart() {
               tickFormatter={(value) => value.slice(0, 3)}
             />
             <ChartTooltip content={<ChartTooltipContent />} />
-            {/* <ChartLegend content={<ChartLegendContent />} /> */}
             <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
             <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
           </BarChart>

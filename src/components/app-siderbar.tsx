@@ -32,7 +32,7 @@ import { ThemeToggle } from './theme-toggle';
 const items = [
   {
     title: 'Dashboard',
-    url: '#',
+    url: '/dashboard',
     icon: Home,
   },
   {
@@ -64,7 +64,7 @@ export default function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton>
-              <h1 className="font-bold">Financer.</h1>
+              <h1 className="font-bold text-xl">Financer.</h1>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
