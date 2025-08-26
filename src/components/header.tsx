@@ -1,6 +1,6 @@
 import { FileTextIcon, HomeIcon, LayersIcon, UsersIcon } from 'lucide-react';
 
-import { ThemeToggle } from './theme-toggle';
+import { ThemeToggle } from './ui/theme-toggle';
 import { Button } from '@/components/ui/button';
 import {
   NavigationMenu,

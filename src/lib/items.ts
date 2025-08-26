@@ -2,12 +2,24 @@
 
 import { db } from '@/db/db';
 import { items } from '@/db/schema';
+import { sql } from 'drizzle-orm';
 
-export default async function getItems() {
+export async function getItems() {
   try {
     const fetchedItems = await db.select().from(items);
-    console.log(fetchedItems);
     return fetchedItems;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getItem(id: number) {
+  try {
+    const fetchedItem = await db
+      .select()
+      .from(items)
+      .where(sql`${items.id} = ${id}`);
+    return fetchedItem;
   } catch (error) {
     throw error;
   }

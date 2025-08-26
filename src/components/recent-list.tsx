@@ -1,4 +1,4 @@
-import getItems from '@/lib/items';
+import { getItems } from '@/lib/items';
 
 import {
   Table,
@@ -12,7 +12,6 @@ import {
 
 export default async function RecentList() {
   const items = await getItems();
-  console.log(items);
 
   return (
     <Table className="md:max-w-3/4 mx-auto">

@@ -9,22 +9,20 @@ import {
   ChartTooltipContent,
   ChartLegend,
   ChartLegendContent,
-} from './chart';
+} from './ui/chart';
 
-import { Skeleton } from './skeleton';
+import { Skeleton } from './ui/skeleton';
 
 import { Monitor, Smartphone } from 'lucide-react';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import getItems from '@/lib/items';
+import { getItems } from '@/lib/items';
 
 export default function RecentChart() {
   const { items, isLoading } = useQuery({
     queryKey: ['items'],
     queryFn: getItems,
   });
-
-  console.log(items);
 
   const chartData = [
     { month: 'January', desktop: 186, mobile: 80 },
