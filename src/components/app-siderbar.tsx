@@ -64,7 +64,7 @@ export default function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton>
-              <h1 className="font-bold text-xl">Financer.</h1>
+              <h1 className="font-bold text-xl">Finance Tracker</h1>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
