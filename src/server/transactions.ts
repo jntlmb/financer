@@ -28,7 +28,7 @@ export async function getTransaction(id: number) {
 
 export type TransactionInsert = Omit<
   Transaction,
-  'id' | 'createdAt' | 'updatedAt' | 'userId'
+  'id' | 'createdAt' | 'updatedAt' | 'userId' | 'transactionType'
 >;
 
 export async function addExpense(data: TransactionInsert) {
@@ -36,6 +36,7 @@ export async function addExpense(data: TransactionInsert) {
     await db.insert(transactions).values({
       ...data,
       userId: 1,
+      transactionType: 'expense',
     });
   } catch (error) {
     throw error;

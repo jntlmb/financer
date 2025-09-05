@@ -32,19 +32,6 @@ import {
 import { Loader2Icon } from 'lucide-react';
 import { toast } from 'sonner';
 
-// const formSchema = createInsertSchema(transactions, {
-//   title: z
-//     .string()
-//     .min(2, {
-//       message: 'Name must be at least 2 characters long',
-//     })
-//     .transform((s) => capitalize(s)),
-//   amount: z.string().min(1, {
-//     message: 'Please enter a price',
-//   }),
-//   category: z.string().nonempty('Please choose a category'),
-// });
-
 const formSchema = createInsertSchema(transactions, {
   title: z.string().min(2, {
     message: 'Name must be at least 2 characters long',
@@ -56,7 +43,6 @@ const formSchema = createInsertSchema(transactions, {
       message: 'Please enter a valid positive number',
     }),
   category: z.string().min(1, 'Please choose a category'),
-  transactionType: z.string(),
 });
 
 export default function ExpenseForm() {
@@ -80,7 +66,6 @@ export default function ExpenseForm() {
 
     try {
       const expenseData: TransactionInsert = {
-        transactionType: 'expense',
         title: capitalize(values.title),
         category: values.category as Transaction['category'],
         amount: values.amount,
@@ -165,30 +150,6 @@ export default function ExpenseForm() {
             )}
           />
         </div>
-        {/* <div className="border p-4 space-y-2">
-          <h3>Debug Info:</h3>
-          <Button
-            type="button"
-            onClick={() =>
-              console.log('Direct button works!', form.getValues())
-            }
-            variant="outline"
-          >
-            Test Button (Direct)
-          </Button>
-          <Button
-            type="button"
-            onClick={() => {
-              console.log('Form values:', form.getValues());
-              console.log('Form errors:', form.formState.errors);
-              console.log('Form valid:', form.formState.isValid);
-            }}
-            variant="outline"
-          >
-            Log Form State
-          </Button>
-        </div> */}
-
         {!isLoading ? (
           <Button type="submit">Submit</Button>
         ) : (
