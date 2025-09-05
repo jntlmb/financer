@@ -1,17 +1,13 @@
 'use client';
-
-import { TrendingUp } from 'lucide-react';
 import { CartesianGrid, Line, LineChart, XAxis } from 'recharts';
 
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
-
-export const description = 'A linear line chart';
 
 const chartData = [
   { month: 'January', desktop: 186 },
@@ -32,6 +28,9 @@ const chartConfig = {
 export function ActivityChart() {
   return (
     <Card>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">Recent Activity</CardTitle>
+      </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
           <LineChart
@@ -64,14 +63,6 @@ export function ActivityChart() {
           </LineChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 leading-none font-medium">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="text-muted-foreground leading-none">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   );
 }

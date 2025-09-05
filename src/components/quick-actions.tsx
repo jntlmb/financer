@@ -39,7 +39,9 @@ export default function QuickActions() {
           </DialogTrigger>
           <DialogContent>
             <DialogTitle>Add Expense</DialogTitle>
-            <DialogDescription>Here you can add an expense.</DialogDescription>
+            <DialogDescription>
+              Please add an expense in the form below.
+            </DialogDescription>
             <ExpenseForm />
           </DialogContent>
         </Dialog>

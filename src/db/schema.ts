@@ -9,8 +9,9 @@ import {
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
+import { createInsertSchema } from 'drizzle-zod';
+
 export const categoryEnum = pgEnum('category', [
-  'income',
   'housing',
   'food',
   'health',
@@ -20,6 +21,11 @@ export const categoryEnum = pgEnum('category', [
   'education',
   'travel',
   'other',
+]);
+
+export const transactionTypeEnum = pgEnum('transaction_type', [
+  'income',
+  'expense',
 ]);
 
 export const users = pgTable('users', {
@@ -32,26 +38,29 @@ export const users = pgTable('users', {
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 
-export const items = pgTable('items', {
+export const transactions = pgTable('transactions', {
   id: serial('id').primaryKey(),
-  name: text('name').notNull(),
+  title: text('title').notNull(),
+  transactionType: transactionTypeEnum().notNull(),
   category: categoryEnum().notNull(),
-  price: decimal('price').notNull(),
+  amount: decimal('amount').notNull(),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
   userId: integer('user_id'),
 });
 
+export const transactionInsertSchema = createInsertSchema(transactions);
+
 export const usersRelations = relations(users, ({ many }) => ({
-  items: many(items),
+  transactions: many(transactions),
 }));
 
-export const itemsRelations = relations(items, ({ one }) => ({
+export const transactionsRelations = relations(transactions, ({ one }) => ({
   user: one(users, {
-    fields: [items.userId],
+    fields: [transactions.userId],
     references: [users.id],
   }),
 }));
 
 export type User = typeof users.$inferSelect;
-export type Item = typeof items.$inferSelect;
+export type Transaction = typeof transactions.$inferSelect;

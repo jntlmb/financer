@@ -7,6 +7,8 @@ export default function Loading() {
         <Skeleton className="min-h-64 rounded-xl" />
         <Skeleton className="min-h-64 rounded-xl" />
         <Skeleton className="min-h-64 rounded-xl" />
+        <Skeleton className="min-h-64 rounded-xl" />
+        <Skeleton className="min-h-64 rounded-xl" />
       </div>
     </div>
   );

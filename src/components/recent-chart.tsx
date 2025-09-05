@@ -16,12 +16,12 @@ import { Skeleton } from './ui/skeleton';
 import { Monitor, Smartphone } from 'lucide-react';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { getItems } from '@/lib/items';
+import { getTransactions } from '@/server/transactions';
 
 export default function RecentChart() {
-  const { items, isLoading } = useQuery({
+  const { transactions, isLoading } = useQuery({
     queryKey: ['items'],
-    queryFn: getItems,
+    queryFn: getTransactions,
   });
 
   const chartData = [
